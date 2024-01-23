@@ -22,7 +22,11 @@ class AllItemActivity : AppCompatActivity() {
             R.drawable.menu4,
             R.drawable.menu5,
             R.drawable.menu6,
+
         )
+        binding.backButton.setOnClickListener {
+            finish()
+        }
         val adapter = AddItemAdapter(ArrayList(menuFoodName),
             ArrayList(menuItemPrice),ArrayList(menuImage))
         binding.MenuRecylerView.layoutManager = LinearLayoutManager(this)
