@@ -231,6 +231,7 @@
         app:layout_constraintTop_toTopOf="@+id/cardView3">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/allItemMenu"
             android:layout_width="match_parent"
             android:background="@drawable/cardgreen"
             android:layout_height="match_parent">

@@ -13,9 +13,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        binding.addMenu.setOnClickListener {
-            val intent = Intent(this,AddItemActivity::class.java)
+        binding.allItemMenu.setOnClickListener {
+            val intent = Intent(this,AllItemActivity::class.java)
             startActivity(intent)
         }
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
