@@ -117,7 +117,7 @@
         app:layout_constraintTop_toBottomOf="@+id/name" />
 
     <EditText
-        android:id="@+id/EmailOrPhone"
+        android:id="@+id/emailOrPhone"
         android:layout_width="0dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
@@ -144,13 +144,13 @@
         android:fontFamily="@font/lato_bold"
         android:hint="Password"
         android:paddingLeft="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/EmailOrPhone"
-        app:layout_constraintStart_toStartOf="@+id/EmailOrPhone"
-        app:layout_constraintTop_toBottomOf="@+id/EmailOrPhone" />
+        app:layout_constraintEnd_toEndOf="@+id/emailOrPhone"
+        app:layout_constraintStart_toStartOf="@+id/emailOrPhone"
+        app:layout_constraintTop_toBottomOf="@+id/emailOrPhone" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/CreateButton"
+        android:id="@+id/createUserButton"
         android:layout_width="157dp"
         android:layout_height="57dp"
         android:layout_marginTop="12dp"
@@ -172,9 +172,9 @@
         android:fontFamily="@font/lato_bold"
         android:text="Already Have An Account?"
         android:textColor="@color/textColor"
-        app:layout_constraintEnd_toEndOf="@+id/CreateButton"
-        app:layout_constraintStart_toStartOf="@+id/CreateButton"
-        app:layout_constraintTop_toBottomOf="@+id/CreateButton" />
+        app:layout_constraintEnd_toEndOf="@+id/createUserButton"
+        app:layout_constraintStart_toStartOf="@+id/createUserButton"
+        app:layout_constraintTop_toBottomOf="@+id/createUserButton" />
 
     <TextView
         android:id="@+id/textView3"
