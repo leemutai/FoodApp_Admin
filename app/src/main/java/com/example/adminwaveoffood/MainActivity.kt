@@ -33,7 +33,11 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this,CreateUserActivity::class.java)
             startActivity(intent)
         }
-
+        binding.pendingOrderTextView.setOnClickListener {
+            val intent = Intent(
+                this,PendingOrderActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
 

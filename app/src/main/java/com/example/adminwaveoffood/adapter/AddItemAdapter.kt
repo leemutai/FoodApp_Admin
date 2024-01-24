@@ -34,7 +34,7 @@ class AddItemAdapter(
                 foodNameTextView.text = menuItemName[position]
                 priceTextView.text = menuItemPrice[position]
                 foodImageView.setImageResource(menuItemImage[position])
-quantityTextView.text = quantity.toString()
+                quantityTextView.text = quantity.toString()
 
                 minusButton.setOnClickListener {
                     decreaseQuantity(position)
