@@ -13,6 +13,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.addMenu.setOnClickListener {
+            val intent = Intent(this,AddItemActivity::class.java)
+            startActivity(intent)
+        }
         binding.allItemMenu.setOnClickListener {
             val intent = Intent(this,AllItemActivity::class.java)
             startActivity(intent)
@@ -23,6 +27,10 @@ class MainActivity : AppCompatActivity() {
         }
         binding.profile.setOnClickListener {
             val intent = Intent(this,AdminProfileActivity::class.java)
+            startActivity(intent)
+        }
+        binding.createUser.setOnClickListener {
+            val intent = Intent(this,CreateUserActivity::class.java)
             startActivity(intent)
         }
 
