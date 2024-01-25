@@ -75,7 +75,7 @@
         android:drawablePadding="15dp"
         android:elevation="2dp"
         android:hint="Password"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:outlineSpotShadowColor="@color/textColor"
         android:paddingLeft="15dp"
         app:layout_constraintEnd_toEndOf="parent"
