@@ -1,18 +1,20 @@
 package com.example.adminwaveoffood.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.view.textclassifier.ConversationActions.Message
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.adminwaveoffood.databinding.PendingOrdersItemsBinding
 
 class PendingOrderAdapter(
-    private val customerNames: ArrayList<String>,
-    private val quantity: ArrayList<String>,
-    private val foodImage: ArrayList<Int>,
     private val context: Context,
+    private val customerNames: MutableList<String>,
+    private val quantity: MutableList<String>,
+    private val foodImage: MutableList<String>,
+    //private val itemClicked: OnItemClicked,
 ) : RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
 
 
@@ -34,7 +36,9 @@ class PendingOrderAdapter(
             binding.apply {
                 customerName.text = customerNames[position]
                 pendingOrderQuantity.text = quantity[position]
-                orderedFoodImage.setImageResource(foodImage[position])
+                var uriString = foodImage[position]
+                var uri = Uri.parse(uriString)
+                 Glide.with(context).load(uri).into(orderedFoodImage)
 
                 orderedAcceptButton.apply {
                     if (!isAccepted) {

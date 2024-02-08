@@ -104,7 +104,7 @@ class AddItemActivity : AppCompatActivity() {
                 Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show()
             }
 
-        } else{
+        } else {
             Toast.makeText(this, "Please select an image", Toast.LENGTH_SHORT).show()
         }
     }
@@ -113,7 +113,7 @@ class AddItemActivity : AppCompatActivity() {
         registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
             if (uri != null)
                 binding.selectedImage.setImageURI(uri)
-                foodImageUri = uri
+            foodImageUri = uri
         }
 }
 
