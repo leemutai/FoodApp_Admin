@@ -9,7 +9,7 @@ class OrderDetails() : Parcelable{
     var foodNames: MutableList<String>? = null
     var foodImages: MutableList<String>? = null
     var foodPrices: MutableList<String>? = null
-    var foodQuantities: MutableList<Int>? = null
+    var foodQuantities: MutableList<String>? = null
     var address: String? = null
     var totalPrice: String? = null
     var phoneNumber: String? = null

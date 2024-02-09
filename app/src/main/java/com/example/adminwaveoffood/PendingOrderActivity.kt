@@ -1,5 +1,6 @@
 package com.example.adminwaveoffood
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +13,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class PendingOrderActivity : AppCompatActivity() {
+class PendingOrderActivity : AppCompatActivity(),PendingOrderAdapter.OnItemClicked {
     private lateinit var binding : ActivityPendingOrderBinding
     private var listOfName:MutableList<String> = mutableListOf()
     private var listOfTotalPrice:MutableList<String> = mutableListOf()
@@ -70,8 +71,15 @@ class PendingOrderActivity : AppCompatActivity() {
 
     private fun setAdapter() {
          binding.pendingOrderRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter = PendingOrderAdapter(this,listOfName,listOfTotalPrice,listOfImagesFirstFoodOrder)
+        val adapter = PendingOrderAdapter(this,listOfName,listOfTotalPrice,listOfImagesFirstFoodOrder,this)
         binding.pendingOrderRecyclerView.adapter = adapter
+    }
+
+    override fun onItemClickListener(position: Int){
+        val intent = Intent(this,OrderDetailsActivity::class.java)
+        val userOrderDetails = listOrderItem[position]
+        intent.putExtra("UserOrderDetails",userOrderDetails)
+        startActivity(intent)
     }
 }
 
