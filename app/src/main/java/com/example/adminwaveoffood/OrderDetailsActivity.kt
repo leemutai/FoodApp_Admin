@@ -1,8 +1,7 @@
-package com.example.adminwaveoffood
-
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.adminwaveoffood.adapter.OrderDetailsAdapter
 import com.example.adminwaveoffood.databinding.ActivityOrderDetailsBinding
 import com.example.adminwaveoffood.model.OrderDetails
 
@@ -16,7 +15,7 @@ class OrderDetailsActivity : AppCompatActivity() {
     private var totalPrice: String? = null
     private var foodNames: MutableList<String> = mutableListOf()
     private var foodImages: MutableList<String> = mutableListOf()
-    private var foodQuantity: MutableList<String> = mutableListOf()
+    private var foodQuantity: MutableList<Int> = mutableListOf()
     private var foodPrices: MutableList<String> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,7 +53,8 @@ class OrderDetailsActivity : AppCompatActivity() {
         binding.totalPay.text = totalPrice
     }
     private fun setAdapter() {
-binding.orderDetailRecyclerView.layoutManager = LinearLayoutManager(this)
-        val adapter =
+        binding.orderDetailRecyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = OrderDetailsAdapter(this,foodNames,foodImages,foodQuantity,foodPrices)
+        binding.orderDetailRecyclerView.adapter = adapter
     }
 }

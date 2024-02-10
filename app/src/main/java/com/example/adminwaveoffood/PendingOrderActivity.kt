@@ -18,7 +18,7 @@ class PendingOrderActivity : AppCompatActivity(),PendingOrderAdapter.OnItemClick
     private var listOfName:MutableList<String> = mutableListOf()
     private var listOfTotalPrice:MutableList<String> = mutableListOf()
     private var listOfImagesFirstFoodOrder:MutableList<String> = mutableListOf()
-    private var listOrderItem :MutableList<OrderDetails> = mutableListOf()
+    private var listOrderItem :ArrayList<OrderDetails> = arrayListOf()
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseOrderDetails:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
