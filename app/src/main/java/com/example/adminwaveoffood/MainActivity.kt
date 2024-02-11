@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.adminwaveoffood.databinding.ActivityLoginBinding
 import com.example.adminwaveoffood.databinding.ActivityMainBinding
+import com.example.adminwaveoffood.model.OrderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -48,10 +49,39 @@ class MainActivity : AppCompatActivity() {
             )
             startActivity(intent)
         }
+        binding.logoutButton.setOnClickListener {
+            auth.signOut()
+            startActivity(Intent(this,SignUpActivity::class.java))
+            finish()
+        }
 
         pendingOrders()
 
         completedOrders()
+
+        wholeTimeEarnings()
+    }
+
+    private fun wholeTimeEarnings() {
+        var listOfTotalPay:MutableList<Int> = mutableListOf<Int>()
+        completedOrderReference = FirebaseDatabase.getInstance().reference.child("CompletedOrder")
+        completedOrderReference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+                 for (orderSnapshot:DataSnapshot in snapshot.children){
+                     var completeOrder = orderSnapshot.getValue(OrderDetails::class.java)
+                     completeOrder?.totalPrice?.replace("$","")?.toIntOrNull()
+                         ?.let { i ->
+                             listOfTotalPay.add(i)
+                         }
+                 }
+                binding.wholeTimeEarning.text = listOfTotalPay.sum().toString() + "$"
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+        })
     }
 
     private fun completedOrders() {
@@ -68,7 +98,6 @@ class MainActivity : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {
 
             }
-
         })
     }
 

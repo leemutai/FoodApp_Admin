@@ -3,6 +3,7 @@ package com.example.adminwaveoffood
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adminwaveoffood.adapter.MenuItemAdapter
 import com.example.adminwaveoffood.databinding.ActivityAllItemBinding
@@ -72,9 +73,26 @@ database = FirebaseDatabase.getInstance()
     }
 
     private fun setAdapter() {
-        val adapter = MenuItemAdapter(this@AllItemActivity,menuItems,databaseReference)
+
+        val adapter = MenuItemAdapter(this@AllItemActivity,menuItems,databaseReference){position ->
+            deleteMenuItems(position)
+        }
         binding.MenuRecylerView.layoutManager = LinearLayoutManager(this)
         binding.MenuRecylerView.adapter = adapter
+    }
+
+    private fun deleteMenuItems(position: Int) {
+         val menuItemToDelete = menuItems[position]
+        val menuItemKey = menuItemToDelete.key
+        val foodMenuReference:DatabaseReference = database.reference.child("menu").child(menuItemKey!!)
+        foodMenuReference.removeValue().addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                menuItems.removeAt(position)
+                binding.MenuRecylerView.adapter?.notifyItemRemoved(position)
+            }else{
+                Toast.makeText(this,"Item Not Deleted", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }
 
