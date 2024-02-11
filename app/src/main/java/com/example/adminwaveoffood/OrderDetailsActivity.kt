@@ -13,11 +13,10 @@ class OrderDetailsActivity : AppCompatActivity() {
     private var address: String? = null
     private var phoneNumber: String? = null
     private var totalPrice: String? = null
-    private var foodNames: MutableList<String> = mutableListOf()
-    private var foodImages: MutableList<String> = mutableListOf()
-    private var foodQuantity: MutableList<Int> = mutableListOf()
-    private var foodPrices: MutableList<String> = mutableListOf()
-
+    private var foodNames: ArrayList<String> =  arrayListOf()
+    private var foodImages: ArrayList<String> = arrayListOf()
+    private var foodQuantity: ArrayList<Int> =  arrayListOf()
+    private var foodPrices: ArrayList<String> =  arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -28,20 +27,21 @@ class OrderDetailsActivity : AppCompatActivity() {
     }
 
     private fun getDataFromIntent() {
-        val receivedOrderDetails = intent.getParcelableExtra<OrderDetails>("UserOrderDetails")
-        if (receivedOrderDetails != null) {
-            userName = receivedOrderDetails.userName
-            foodNames = receivedOrderDetails.foodNames!!
-            foodImages = receivedOrderDetails.foodImages!!
-            foodQuantity = receivedOrderDetails.foodQuantities!!
-            address = receivedOrderDetails.address
-            phoneNumber = receivedOrderDetails.phoneNumber
-            foodPrices = receivedOrderDetails.foodPrices!!
-            totalPrice = receivedOrderDetails.totalPrice
+        val receivedOrderDetails = intent.getSerializableExtra("UserOrderDetails") as OrderDetails
+        receivedOrderDetails?.let {OrderDetails ->
+                userName = receivedOrderDetails.userName
+                foodNames = receivedOrderDetails.foodNames as ArrayList<String>
+                foodImages = receivedOrderDetails.foodImages as ArrayList<String>
+                foodQuantity = receivedOrderDetails.foodQuantities as ArrayList<Int>
+                address = receivedOrderDetails.address
+                phoneNumber = receivedOrderDetails.phoneNumber
+                foodPrices = receivedOrderDetails.foodPrices as ArrayList<String>
+                totalPrice = receivedOrderDetails.totalPrice
 
-            setUserDetail()
-            setAdapter()
+                setUserDetail()
+                setAdapter()
         }
+
     }
 
 

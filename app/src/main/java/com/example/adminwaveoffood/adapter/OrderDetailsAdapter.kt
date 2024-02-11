@@ -10,10 +10,10 @@ import com.example.adminwaveoffood.databinding.OrderDetailItemBinding
 
 class OrderDetailsAdapter(
     private val context: Context,
-    private var foodNames: MutableList<String>,
-    private var foodImages: MutableList<String>,
-    private var foodQuantity: MutableList<Int>, // Corrected to MutableList<Int>
-    private var foodPrices: MutableList<String>
+    private var foodNames: ArrayList<String>,
+    private var foodImages: ArrayList<String>,
+    private var foodQuantity: ArrayList<Int>, // Corrected to MutableList<Int>
+    private var foodPrices: ArrayList<String>
 ): RecyclerView.Adapter<OrderDetailsAdapter.OrderDetailsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderDetailsViewHolder {
