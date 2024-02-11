@@ -18,6 +18,9 @@ class PendingOrderAdapter(
 ) : RecyclerView.Adapter<PendingOrderAdapter.PendingOrderViewHolder>() {
 interface OnItemClicked{
     fun onItemClickListener(position: Int)
+    fun onItemAcceptClickListener(position: Int)
+    fun onItemDispatchClickListener(position: Int)
+
 }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PendingOrderViewHolder {
@@ -53,10 +56,12 @@ interface OnItemClicked{
                             text = "Dispatch"
                             isAccepted = true
                             showToast("Order is accepted")
+                            itemClicked.onItemAcceptClickListener(position)
                         } else {
                             customerNames.removeAt(adapterPosition)
                             notifyItemRemoved(adapterPosition)
                             showToast("Order Is dispatched")
+                            itemClicked.onItemDispatchClickListener(position)
 
                         }
                     }

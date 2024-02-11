@@ -5,7 +5,7 @@ import android.os.Parcelable
 import java.io.Serializable
 
 class OrderDetails() : Serializable{
-    var userId: String? = null
+    var userUid: String? = null
     var userName: String? = null
     var foodNames: MutableList<String>? = null
     var foodImages: MutableList<String>? = null
@@ -20,7 +20,7 @@ class OrderDetails() : Serializable{
     var currentTime: Long = 0
 
     constructor(parcel: Parcel) : this() {
-        userId = parcel.readString()
+        userUid = parcel.readString()
         userName = parcel.readString()
         address = parcel.readString()
         totalPrice = parcel.readString()
@@ -32,7 +32,7 @@ class OrderDetails() : Serializable{
     }
 
      fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(userId)
+        parcel.writeString(userUid)
         parcel.writeString(userName)
         parcel.writeString(address)
         parcel.writeString(totalPrice)
